@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
-export default function Form({ setNumberOfDogs }) {
+export default function Form({ setNumber }) {
   // How can we manage the number of dogs?
 
   const [inputText, setInputText] = useState("");
@@ -24,6 +24,7 @@ export default function Form({ setNumberOfDogs }) {
           onClick={(e) => {
             e.preventDefault();
             // When we click on the WOOF! button, what happens?
+           setNumber(inputText)
           }}
           type="submit"
           className="btn btn-primary"
