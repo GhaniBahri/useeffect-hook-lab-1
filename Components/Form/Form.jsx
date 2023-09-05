@@ -24,6 +24,7 @@ export default function Form({ setNumber }) {
           onClick={(e) => {
             e.preventDefault();
             // When we click on the WOOF! button, what happens?
+            console.log(inputText)
            setNumber(inputText)
           }}
           type="submit"

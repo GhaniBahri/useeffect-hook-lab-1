@@ -11,7 +11,7 @@ export default function Home() {
   // You will need to put a state here to save all the dogs data into
   // And you will fetch the data with useEffect
   const [dogs, setDogs]= useState([])
-  const [number, setNumber]= useState("")
+  const [number, setNumber]= useState("1")
   
   function fetchDogs() {
     return fetch('https://dog.ceo/api/breeds/image/random/'+number).then(res=>res.json()).then(data=>{
@@ -20,7 +20,12 @@ export default function Home() {
     })
   }
 
-  useEffect(()=>{fetchDogs()}, [])
+  useEffect(()=>{
+    fetch('https://dog.ceo/api/breeds/image/random/'+number).then(res=>res.json()).then(data=>{
+      setDogs(data.message)
+      console.log(data)
+    })
+  }, [number])
 
    return (
     <div className="card">
@@ -28,7 +33,7 @@ export default function Home() {
           How can we do that by utilizing useState?
           
       */}
-      <Form setNumber={number}/>{/* Uncomment  if you are going after the bonus */}
+      <Form setNumber={setNumber}/>{/* Uncomment  if you are going after the bonus */}
       {/* This page should receive the images array */}
       <DogList dogsList={dogs}/>
     </div>
